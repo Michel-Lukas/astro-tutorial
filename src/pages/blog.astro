@@ -1,0 +1,25 @@
+---
+import BlogPost from '../components/BlogPost.astro';
+import Layout from '../layouts/Layout.astro';
+const allPosts = await Astro.glob('../pages/posts/*.md');
+---
+
+<Layout title="Welcome to Astro.">
+   <main>
+      <p>This is whete I will post about my joruney learnign Astro</p>
+      <ul>
+         {
+            allPosts.map((post) => (
+               <BlogPost
+                  url={post.url}
+                  title={post.frontmatter.title}
+               />
+            ))
+         }
+      </ul>
+   </main>
+</Layout>
+
+<script>
+   import '../scripts/menu.js';
+</script>
